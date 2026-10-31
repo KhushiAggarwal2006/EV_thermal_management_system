@@ -1,5 +1,25 @@
 %% =============================================================
 %  EV CABIN HVAC - FORWARD / INVERSE PSYCHROMETRIC MODEL
+% FORWARD MODEL: INPUT IS THE DESIRED CABIN CONDITION, OUTPUT IS THE EVAPORATOR POWER AND TEMPERATURE
+%INVERSE MODEL: INPUT IS THE GIVEN EVAPORATOR POWER AND TEMPERATURE, OUTPUT IS THE RESULTANT CABIN CONDITION (condition means temp and RH)
+
+%%For getting coolprop to work for MATLAB BROWSER VERSION: (steps 1/2/4 need not be run everytime; only step 3 needs to be run if you are refreshing again)
+% 1. Download get-pip.py into temp folder
+%websave('/tmp/get-pip.py', 'https://bootstrap.pypa.io/get-pip.py');
+
+% 2. Install pip and CoolProp for user account
+%system('python3 /tmp/get-pip.py --user');
+%system('python3 -m pip install --user -U CoolProp');
+
+% 3. Dynamically locate user site-packages and add to MATLAB's Python
+% path-- this needs to be initialised everytime 
+%userSiteDir = char(py.site.getusersitepackages());
+%if count(py.sys.path, userSiteDir) == 0
+%   insert(py.sys.path, int32(0), userSiteDir);
+%end
+
+% 4. Refresh Python module cache
+%py.importlib.invalidate_caches();
 
 %  Air path:
 %    outdoor air + recirculated cabin air -> MIXING
